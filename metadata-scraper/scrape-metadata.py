@@ -24,7 +24,10 @@ def build_ydl_options(start_year, end_year):
   }
 
 def main():
-
+  """
+  Usage:
+  python3 scrape-metadata.py <youtube channel url> <start year> <end year>
+  """
   youtube_channel_link = sys.argv[1]
   start_year = int(sys.argv[2])
   end_year = int(sys.argv[3])
