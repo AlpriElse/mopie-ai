@@ -1,0 +1,1 @@
+ls | grep --include *.json | xargs -I {} rm "{}"
