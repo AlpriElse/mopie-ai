@@ -4,9 +4,9 @@ from sqlalchemy.orm import declarative_base, Mapped, mapped_column
 Base = declarative_base()
 
 class VideoMetadataEntity(Base):
-  __tablename__ = "user_account"
+  __tablename__ = "video_metadatas"
   
-  id: Mapped[str] = mapped_column(primary_key=True)
+  id: Mapped[str] = mapped_column(String(16), primary_key=True)
   title: Mapped[str] = mapped_column(String(100))
   duration: Mapped[int] 
   view_count: Mapped[int]
