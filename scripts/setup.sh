@@ -9,8 +9,11 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 
+# Install mysqlsh
+sudo yum update
+sudo yum install mysql
+
+# Clone repo
 git clone https://github.com/AlpriElse/mopie-ai.git
 
-cd mopie-ai/metadata-scraper
 
-pip3 install -r requirements.txt
