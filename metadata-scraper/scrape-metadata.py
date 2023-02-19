@@ -35,6 +35,8 @@ def main():
   with YoutubeDL(build_ydl_options(start_year, end_year)) as ydl:
     ydl.download([youtube_channel_link])
  
+  print('Finished downloading metadata. Uploading to S3...')
+
   for filename in os.listdir(METADATA_OUTPUT_FOLER):
     s3.meta.client.upload_file(
       f'{METADATA_OUTPUT_FOLER}/{filename}', 
