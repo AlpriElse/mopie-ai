@@ -1,16 +1,37 @@
-from sqlalchemy import String
-from sqlalchemy.orm import declarative_base, Mapped, mapped_column
+from dataclasses import dataclass
+import json
 
-Base = declarative_base()
+@dataclass(frozen=True)
+class VideoMetadata:
+  id: str
+  title: str
+  duration: int
+  view_count: int
+  upload_date_iso: str
 
-class VideoMetadata(Base):
-  __tablename__ = "user_account"
-  
-  id: Mapped[str] = mapped_column(primary_key=True)
-  title: Mapped[str] = mapped_column(String(100))
-  duration: Mapped[int] 
-  view_count: Mapped[int]
-  upload_date_iso: Mapped[str] = mapped_column(String(10))
+  @classmethod
+  def from_json(cls, json_str):
+    data = json.loads(json_str)
 
-  def __repr__(self) -> str:
-    return f"VideoMetadata(id={self.id!r}, title={self.title!r}, duration={self.duration!r}), view_count={self.view_count!r}, upload_date_iso={self.upload_date_iso!r})"
+    key_to_field = {
+      'id': 'id',
+      'title': 'title',
+      'duration': 'duration',
+      'view_count': 'view_count',
+      'upload_date': 'upload_date_iso'
+    }
+
+    def object_hook(d):
+      new_dict = {}
+      for key, value in d.items():
+        if key not in key_to_field:
+          continue
+
+        new_key = key_to_field.get(key, key)
+        new_dict[new_key] = value
+      return new_dict
+    
+    decoder = json.JSONDecoder(object_hook=object_hook)
+    data = decoder.decode(json_str)
+
+    return cls(**data)
