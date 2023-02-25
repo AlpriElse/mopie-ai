@@ -1,0 +1,20 @@
+{
+  "Records": [
+    {
+      "messageId": "some-message-id",
+      "receiptHandle": "some-receipt-handle",
+      "body": "{\"video_id\": \"something\"}",
+      "attributes": {
+          "ApproximateReceiveCount": "1",
+          "SentTimestamp": "meh",
+          "SenderId": "meh",
+          "ApproximateFirstReceiveTimestamp": "meh"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "098f6bcd4621d373cade4e832627b4f6",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "meh",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}
