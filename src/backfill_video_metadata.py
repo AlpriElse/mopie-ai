@@ -3,8 +3,8 @@ from mopie_data.video_metadata_s3_manager import VideoMetadataS3Manager
 from mopie_data.db import create_connection
 from sqlalchemy import insert
 from sqlalchemy.orm import sessionmaker
-from adapters import VideoMetadataAdapter 
-from models import VideoMetadata
+from mopie_common.adapters import VideoMetadataAdapter 
+from mopie_common.models import VideoMetadata
 from dotenv import load_dotenv
 
 load_dotenv()
